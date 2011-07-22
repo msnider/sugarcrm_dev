@@ -91,6 +91,10 @@ class LogicHook{
 	 * @param SugarBean $bean
 	 */
 	function call_custom_logic($module_dir, $event, $arguments = null){
+		if ($module_dir instanceof MBModule) {
+                        $module_dir = (string) $module_dir->getModuleName();
+		}
+
 		// declare the hook array variable, it will be defined in the included file.
 		$hook_array = null;
         if(isset($GLOBALS['log'])){
